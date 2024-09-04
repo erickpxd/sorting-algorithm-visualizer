@@ -18,7 +18,7 @@ public class Sorter {
     private static final long DELAY = 500;
 
     /**
-     * Método genérico para ordenar um array de elementos comparáveis.
+     * Maneira genérica para ordenar um array de elementos comparáveis.
      *
      * @param array     O array a ser ordenado.
      * @param algorithm O algoritmo de ordenação a ser utilizado.
@@ -35,7 +35,7 @@ public class Sorter {
     }
 
     /**
-     * Método específico para ordenar um array de inteiros.
+     * Metodo específico para ordenar um array de inteiros.
      *
      * @param array     O array de inteiros a ser ordenado.
      * @param algorithm O algoritmo de ordenação a ser utilizado.
@@ -57,7 +57,7 @@ public class Sorter {
     }
 
     /**
-     * Método genérico para ordenar um array de elementos comparáveis.
+     * Metodo genérico para ordenar um array de elementos comparáveis.
      *
      * @param array     O array a ser ordenado.
      * @param algorithm O algoritmo de ordenação a ser utilizado.
@@ -129,7 +129,7 @@ public class Sorter {
     }
 
     /**
-     * Método auxiliar para mesclar dois subarrays.
+     * Metodo auxiliar para mesclar dois subarrays.
      *
      * @param array   O array a ser mesclado.
      * @param left    O índice esquerdo do primeiro subarray.
@@ -176,7 +176,7 @@ public class Sorter {
     }
 
     /**
-     * Método auxiliar para particionar o array para o Quick Sort.
+     * Metodo auxiliar para particionar o array para o Quick Sort.
      *
      * @param array O array a ser particionado.
      * @param low   O índice inferior do subarray.
@@ -203,7 +203,7 @@ public class Sorter {
     }
 
     /**
-     * Método que causa um atraso no thread atual para visualização.
+     * Metodo que causa um atraso no thread atual para visualização.
      */
     private static void sleep() {
         try {
