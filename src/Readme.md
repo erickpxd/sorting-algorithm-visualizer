@@ -1,62 +1,78 @@
-# Projeto de Ordenação com Visualização em Pirâmide
+# Visualização de Ordenação em Pirâmide (SAV)
 
-Este projeto implementa a ordenação de arrays de números inteiros ou caracteres usando algoritmos de ordenação e visualiza o progresso da ordenação em um gráfico estilo pirâmide. O projeto utiliza dois algoritmos de ordenação: Bubble Sort e Merge Sort.
+Este projeto é uma aplicação Java que visualiza algoritmos de ordenação em um formato de pirâmide. Ele permite que o usuário insira um tipo de dado (números ou caracteres), valores, algoritmo de ordenação e ordem (crescente ou decrescente). A visualização é feita em uma interface gráfica usando a biblioteca Swing.
 
-## Funcionalidade
+## Estrutura do Projeto
 
-- Recebe parâmetros da linha de comando para tipo de dado (numérico ou caractere), valores a serem ordenados e o algoritmo de ordenação a ser usado.
-- Exibe a lista ordenada como uma pirâmide, onde a altura da pirâmide é determinada pelo maior valor no array e a largura é igual ao número de elementos.
-- Visualiza a evolução da ordenação com um atraso entre as atualizações para melhor compreensão do processo.
+O projeto é composto pelas seguintes classes:
 
-## Uso
-
-### Sintaxe do Comando
-
-```sh
-java SAV t=<tipo> v=<valores> a=<algoritmo>
-```
-- t=<tipo>: Tipo de dados a ser ordenado. Use n para numérico e c para caractere.
-- v=<valores>: Valores a serem ordenados, separados por vírgulas. Exemplo: 5,3,8,1,2 para números e z,a,Z,A,b para caracteres.
-- a=<algoritmo>: Algoritmo de ordenação a ser usado. Use BUBBLE_SORT ou MERGE_SORT.
-### Exemplos
-Ordenação de números usando Bubble Sort:
-
-```sh
-java SAV t=n v="5,3,8,1,2" a=BUBBLE_SORT
-```
-
-Ordenação de caracteres usando Merge Sort:
-```sh
-java SAV t=c v="z,a,Z,A,b" a=MERGE_SORT
-```
-
-## Algoritmos de Ordenação
-- Bubble Sort
-O Bubble Sort é um algoritmo simples de ordenação que compara pares adjacentes de elementos e os troca se estiverem na ordem errada. Este processo é repetido até que a lista esteja ordenada.
-
-- Merge Sort
-O Merge Sort é um algoritmo eficiente de ordenação que divide a lista em duas metades, ordena cada metade recursivamente e, em seguida, mescla as duas metades ordenadas.
-
-## Visualização
-A visualização dos valores é feita em um gráfico estilo pirâmide, onde a altura da pirâmide é igual ao maior valor no array e a largura é igual ao número de elementos. O gráfico é atualizado após cada passo da ordenação para mostrar o progresso.
-
-## Fluxograma do Processo de Ordenação
-![fluxograma AT4](../src/image/fluxo.png)
+- **SAV**: Classe principal que inicializa a aplicação.
+- **PyramidPanel**: Classe que gerencia a visualização da pirâmide.
+- **InputUtils**: Classe utilitária para validação e processamento de entradas.
+- **Sorter**: Classe que implementa os algoritmos de ordenação.
 
 ## Requisitos
-- Java 8 ou superior
-- Compilação e Execução
-- Para compilar e executar o projeto:
 
-##Compile o código:
-```sh
-javac SAV.java Sorter.java
+- JDK 8 ou superior
+- Biblioteca Swing (inclusa no JDK)
+
+## Como Usar
+
+Para executar a aplicação, utilize o seguinte comando:
+
+```bash
+java SAV t=<tipo> v=<valores> a=<algoritmo> o=<ordem>
 ```
-## Execute o programa com os parâmetros desejados:
-```sh
-java SAV t=n v="5,3,8,1,2" a=BUBBLE_SORT
+# Descrição do Diagrama de Classes UML
+
+## Classes e Métodos
+
+### SAV
+- **Métodos**:
+    - `main(String[] args)`: Método principal que inicia a aplicação.
+    - `sortAndDisplay()`: Método responsável por chamar a lógica de ordenação e exibir os resultados.
+    - Métodos privados para processar tipos e valores.
+
+### PyramidPanel
+- **Atributos**:
+    - `Object[] array`: Armazena os valores a serem exibidos.
+- **Métodos**:
+    - `PyramidPanel(Object[] array)`: Construtor que aceita um array de `Object`.
+    - `updatePyramid(Object[] array)`: Atualiza o array e chama a atualização da interface gráfica.
+    - `paintComponent(Graphics g)`: Desenha as colunas na interface.
+
+### InputUtils
+- **Métodos**:
+    - `isTipoValido(String tipo): boolean`: Verifica se o tipo é válido.
+    - `processarNumeros(String[] valoresArray): Integer[]`: Processa um array de strings em números.
+    - `processarCaracteres(String[] valoresArray): Character[]`: Processa um array de strings em caracteres.
+
+### Sorter
+- **Enumeração**:
+    - `Algorithm`: Define os algoritmos de ordenação disponíveis (Bubble Sort, Merge Sort, Quick Sort).
+- **Métodos**:
+    - `sort(T[] array, Algorithm algorithm, PyramidPanel panel, boolean crescente)`: Método genérico para ordenar.
+    - Métodos privados para implementações específicas de ordenação.
+
+## Relacionamentos
+- A classe `SAV` utiliza `InputUtils` para validar e processar os dados de entrada.
+- A classe `SAV` cria uma instância de `PyramidPanel` para exibir os dados.
+- A classe `SAV` também utiliza `Sorter` para realizar a ordenação.
+- `Sorter` interage com `PyramidPanel` para atualizar a visualização durante a ordenação.
+
+## Fluxograma do Processo de Ordenação
+![fluxograma AT4](../src/image/fluxo2.png)
+
+## Exemplos de Execução
+### Para ordenar números em ordem crescente usando Bubble Sort:
+```bash
+java SAV t=n v=5,3,8,1 a=BUBBLE_SORT o=c
 ```
-## Licença
+Resultado:
+![fluxograma AT4](../src/image/Teste1.png)
+### Para ordenar caracteres em ordem decrescente usando Merge Sort:
+```bash
+java SAV t=c v=a,b,c,d e=MERGE_SORT o=d
 ```
-Este projeto é licenciado sob a MIT License. Veja o arquivo LICENSE para mais detalhes.
-```
+Resultado:
+![fluxograma AT4](../src/image/Teste2.png)
