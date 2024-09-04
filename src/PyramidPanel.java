@@ -2,13 +2,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
 
+/**
+ * A classe PyramidPanel estende JPanel e é responsável por desenhar uma visualização em forma de pirâmide
+ * de um array de inteiros ou caracteres.
+ */
 public class PyramidPanel extends JPanel {
     private Object[] array; // Alterado para Object[] para suportar tanto Integer quanto Character
 
+    /**
+     * Construtor que inicializa o painel com um array fornecido.
+     *
+     * @param array O array a ser visualizado.
+     */
     public PyramidPanel(Object[] array) {
         this.array = array;
     }
 
+    /**
+     * Atualiza o array a ser visualizado e repinta o painel.
+     *
+     * @param array O novo array a ser visualizado.
+     */
     public void updatePyramid(Object[] array) {
         this.array = array;
         repaint();
@@ -21,7 +35,7 @@ public class PyramidPanel extends JPanel {
             return;
         }
 
-        // Determine o valor máximo absoluto para dimensionar as colunas
+        // Determina o valor máximo absoluto para dimensionar as colunas
         int maxAbs = Arrays.stream(array)
                 .mapToInt(value -> {
                     if (value instanceof Integer) {

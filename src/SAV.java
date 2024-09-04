@@ -1,6 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * A classe SAV é a classe principal que inicializa a aplicação e gerencia a entrada de parâmetros,
+ * a configuração da interface gráfica e a execução do algoritmo de ordenação.
+ */
 public class SAV {
     public static void main(String[] args) {
         if (args.length != 4) {

@@ -1,15 +1,31 @@
 import java.util.Arrays;
 
+/**
+ * Classe que implementa algoritmos de ordenação com visualização em um painel.
+ */
 public class Sorter {
+
+    /**
+     * Enumeração que define os algoritmos de ordenação suportados.
+     */
     public enum Algorithm {
         BUBBLE_SORT,
         MERGE_SORT,
-        QUICK_SORT // Adicionando QUICK_SORT
+        QUICK_SORT
     }
 
-    private static final long DELAY = 500;  // Delay in milliseconds
+    // Atraso em milissegundos para visualização
+    private static final long DELAY = 500;
 
-    // Método de ordenação genérica para tipos comparáveis
+    /**
+     * Método genérico para ordenar um array de elementos comparáveis.
+     *
+     * @param array     O array a ser ordenado.
+     * @param algorithm O algoritmo de ordenação a ser utilizado.
+     * @param panel     O painel que será atualizado com a visualização.
+     * @param crescente Verdadeiro se a ordenação deve ser crescente, falso se deve ser decrescente.
+     * @param <T>      O tipo dos elementos do array, que deve implementar Comparable.
+     */
     public static <T extends Comparable<T>> void sort(T[] array, Algorithm algorithm, PyramidPanel panel, boolean crescente) {
         if (array instanceof Integer[]) {
             sortIntegers((Integer[]) array, algorithm, panel, crescente);
@@ -18,7 +34,14 @@ public class Sorter {
         }
     }
 
-    // Método específico para ordenação de inteiros
+    /**
+     * Método específico para ordenar um array de inteiros.
+     *
+     * @param array     O array de inteiros a ser ordenado.
+     * @param algorithm O algoritmo de ordenação a ser utilizado.
+     * @param panel     O painel que será atualizado com a visualização.
+     * @param crescente Verdadeiro se a ordenação deve ser crescente, falso se deve ser decrescente.
+     */
     private static void sortIntegers(Integer[] array, Algorithm algorithm, PyramidPanel panel, boolean crescente) {
         switch (algorithm) {
             case BUBBLE_SORT:
@@ -27,13 +50,21 @@ public class Sorter {
             case MERGE_SORT:
                 mergeSort(array, 0, array.length - 1, panel, crescente);
                 break;
-            case QUICK_SORT: // Adicionando chamada para QUICK_SORT
+            case QUICK_SORT:
                 quickSort(array, 0, array.length - 1, panel, crescente);
                 break;
         }
     }
 
-    // Método de ordenação genérica para outros tipos comparáveis
+    /**
+     * Método genérico para ordenar um array de elementos comparáveis.
+     *
+     * @param array     O array a ser ordenado.
+     * @param algorithm O algoritmo de ordenação a ser utilizado.
+     * @param panel     O painel que será atualizado com a visualização.
+     * @param crescente Verdadeiro se a ordenação deve ser crescente, falso se deve ser decrescente.
+     * @param <T>      O tipo dos elementos do array, que deve implementar Comparable.
+     */
     private static <T extends Comparable<T>> void sortGenerics(T[] array, Algorithm algorithm, PyramidPanel panel, boolean crescente) {
         switch (algorithm) {
             case BUBBLE_SORT:
@@ -42,13 +73,20 @@ public class Sorter {
             case MERGE_SORT:
                 mergeSort(array, 0, array.length - 1, panel, crescente);
                 break;
-            case QUICK_SORT: // Adicionando chamada para QUICK_SORT
+            case QUICK_SORT:
                 quickSort(array, 0, array.length - 1, panel, crescente);
                 break;
         }
     }
 
-    // Implementação do Bubble Sort com visualização
+    /**
+     * Implementação do algoritmo Bubble Sort com visualização.
+     *
+     * @param array     O array a ser ordenado.
+     * @param panel     O painel que será atualizado com a visualização.
+     * @param crescente Verdadeiro se a ordenação deve ser crescente, falso se deve ser decrescente.
+     * @param <T>      O tipo dos elementos do array, que deve implementar Comparable.
+     */
     private static <T extends Comparable<T>> void bubbleSort(T[] array, PyramidPanel panel, boolean crescente) {
         int n = array.length;
         boolean swapped;
@@ -69,7 +107,16 @@ public class Sorter {
         }
     }
 
-    // Implementação do Merge Sort com visualização
+    /**
+     * Implementação do algoritmo Merge Sort com visualização.
+     *
+     * @param array O array a ser ordenado.
+     * @param left  O índice esquerdo do subarray.
+     * @param right O índice direito do subarray.
+     * @param panel O painel que será atualizado com a visualização.
+     * @param crescente Verdadeiro se a ordenação deve ser crescente, falso se deve ser decrescente.
+     * @param <T> O tipo dos elementos do array, que deve implementar Comparable.
+     */
     private static <T extends Comparable<T>> void mergeSort(T[] array, int left, int right, PyramidPanel panel, boolean crescente) {
         if (left < right) {
             int middle = (left + right) / 2;
@@ -81,6 +128,16 @@ public class Sorter {
         }
     }
 
+    /**
+     * Método auxiliar para mesclar dois subarrays.
+     *
+     * @param array   O array a ser mesclado.
+     * @param left    O índice esquerdo do primeiro subarray.
+     * @param middle  O índice médio do subarray.
+     * @param right   O índice direito do segundo subarray.
+     * @param crescente Verdadeiro se a mesclagem deve ser crescente, falso se deve ser decrescente.
+     * @param <T>     O tipo dos elementos do array, que deve implementar Comparable.
+     */
     private static <T extends Comparable<T>> void merge(T[] array, int left, int middle, int right, boolean crescente) {
         T[] temp = Arrays.copyOf(array, array.length);
         int i = left, j = middle + 1, k = left;
@@ -98,7 +155,16 @@ public class Sorter {
         }
     }
 
-    // Implementação do Quick Sort com visualização
+    /**
+     * Implementação do algoritmo Quick Sort com visualização.
+     *
+     * @param array O array a ser ordenado.
+     * @param low   O índice inferior do subarray.
+     * @param high  O índice superior do subarray.
+     * @param panel O painel que será atualizado com a visualização.
+     * @param crescente Verdadeiro se a ordenação deve ser crescente, falso se deve ser decrescente.
+     * @param <T> O tipo dos elementos do array, que deve implementar Comparable.
+     */
     private static <T extends Comparable<T>> void quickSort(T[] array, int low, int high, PyramidPanel panel, boolean crescente) {
         if (low < high) {
             int pi = partition(array, low, high, crescente);
@@ -109,6 +175,16 @@ public class Sorter {
         }
     }
 
+    /**
+     * Método auxiliar para particionar o array para o Quick Sort.
+     *
+     * @param array O array a ser particionado.
+     * @param low   O índice inferior do subarray.
+     * @param high  O índice superior do subarray.
+     * @param crescente Verdadeiro se a particionamento deve ser crescente, falso se deve ser decrescente.
+     * @param <T> O tipo dos elementos do array, que deve implementar Comparable.
+     * @return O índice da partição.
+     */
     private static <T extends Comparable<T>> int partition(T[] array, int low, int high, boolean crescente) {
         T pivot = array[high];
         int i = low - 1;
@@ -126,6 +202,9 @@ public class Sorter {
         return i + 1;
     }
 
+    /**
+     * Método que causa um atraso no thread atual para visualização.
+     */
     private static void sleep() {
         try {
             Thread.sleep(DELAY);
